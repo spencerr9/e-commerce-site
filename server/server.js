@@ -6,6 +6,7 @@ require('dotenv').config();
 const app = express()
 
 const products_controller = require('./controllers/products_controller');
+const cart_controller = require('./controllers/cart_controller');
 
 const {SERVER_PORT, CONNECTION_STRING} = process.env
 
@@ -29,10 +30,12 @@ massive(CONNECTION_STRING).then(dbInstance => {
 
 }).catch(err => console.log(err))
 
-// ENDPOINTS
+// PRODUCTS ENDPOINTS
 app.get( '/api/products', products_controller.getAll )
 
-
+// CART ENDPOINTS
+app.get( '/api/cart', cart_controller.getAll )
+app.post( '/api/cart', cart_controller.create )
 
 
 

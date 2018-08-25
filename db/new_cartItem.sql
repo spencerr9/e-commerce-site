@@ -1,0 +1,1 @@
+INSERT INTO cart ( product, quantity) VALUES ('Crazy Cat Lady', 1);
