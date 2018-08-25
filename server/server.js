@@ -35,7 +35,8 @@ app.get( '/api/products', products_controller.getAll )
 
 // CART ENDPOINTS
 app.get( '/api/cart', cart_controller.getAll )
-app.post( '/api/cart', cart_controller.create )
+app.post( '/api/cart/:product', cart_controller.create )
+app.delete( '/api/cart/:id', cart_controller.delete )
 
 
 

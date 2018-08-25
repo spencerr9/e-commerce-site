@@ -8,7 +8,8 @@ export default class ShopPage extends Component {
         super()
 
         this.state = {
-            products: []
+            products: [],
+            cart: []
         }
     }
 
@@ -21,6 +22,20 @@ export default class ShopPage extends Component {
             .catch(err => {console.log(err)})
     }
 
+    // handleAddToCart() {
+    //     let prodName_prodTable = axios.get('/api/products').then(res => res.data)
+    //     let prodName_cartTable = axios.get('/api/cart').then(res => res.data)
+    //     console.log(prodName_prodTable, prodName_cartTable)
+
+    // }
+
+    handleAddToCart(){
+        axios.post('/api/cartAdd/:id')
+            .then(() => { 
+                console.log('success')
+             })
+    }
+
     render(){
         let mappedProducts = this.state.products.map( (element) => {
             return (
@@ -29,7 +44,13 @@ export default class ShopPage extends Component {
                     <p key={`product ${element.id}`} >{element.product}</p>
                     <p key={`category ${element.id}`} >{element.category}</p>
                     <p key={`price ${element.id}`} >${(element.price)}</p>
-                    <button>Add To Cart</button>
+                    <button
+                    onClick={() => {axios.post(`/api/cart/`+element.product)
+                        .then(() => { 
+                        console.log('success')
+                     })
+                    }}
+                    >Add To Cart</button>
                     <hr></hr>
                 </div>
             )
