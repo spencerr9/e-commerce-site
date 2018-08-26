@@ -39,6 +39,7 @@ app.post( '/api/cart/:product', cart_controller.create )
 app.delete( '/api/cart/:id', cart_controller.delete )
 app.put( '/api/cartDec/:id', cart_controller.subQty )
 app.put( '/api/cartInc/:id', cart_controller.addQty )
+app.delete( '/api/checkout', cart_controller.checkOut )
 
 
 

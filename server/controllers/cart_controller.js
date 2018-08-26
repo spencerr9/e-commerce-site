@@ -61,5 +61,16 @@ module.exports = {
                 res.status(500).send({errorMessage: "--- Something went wrong ---"})
                 console.log(err)
             })
+    },
+
+    checkOut: (req, res, next) => {
+        const dbInstance = req.app.get('db');
+
+        dbInstance.check_out()
+            .then( (items) => res.status(200).send(items))
+            .catch( err => {
+                res.status(500).send({errorMessage: "--- Something went wrong ---"})
+                console.log(err)
+            })
     }
 };

@@ -12,7 +12,7 @@ class App extends Component {
       <div className="App">
         <div className='header'>
           <HashRouter><Link to='/'><button>Shop</button></Link></HashRouter>
-          <h1>Shop</h1>
+          <h1>Action Figures Shop</h1>
           <HashRouter><Link to='/cart'><button>Cart</button></Link></HashRouter>
         </div>
         <div>

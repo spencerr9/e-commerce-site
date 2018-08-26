@@ -1,2 +1,7 @@
-.productsContainer {
+.checkoutButton {
+    /* float: right; */
+}
+
+h3 {
+    line-height: 25%;
 }

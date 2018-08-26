@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+import './ShopPage.css'
+
 export default class Cart extends Component {
     constructor() {
         super()
@@ -17,6 +19,12 @@ export default class Cart extends Component {
             this.setState({cartItems: res.data})
         })
         .catch(err => {console.log(err)})
+    }
+    handleCheckOut() {
+        axios.delete('/api/checkout')
+        .then(res => {
+            this.setState({cartItems: [] })
+        })
     }
 
     render(){
@@ -41,7 +49,9 @@ export default class Cart extends Component {
                                 .then(this.componentDidMount())
                             }}
                             >+</button> 
-                    </p> 
+                        </p> 
+
+                    <p key={`product ${element.price}`} >{element.price}</p>                    
 
                     <button
                     onClick={() => {
@@ -58,7 +68,18 @@ export default class Cart extends Component {
         })
         return (
             <div>
-                <h1>Shopping Cart</h1>
+                <h3>Shopping Cart</h3>
+                <button 
+                    className='checkoutButton'
+                    onClick={() => {
+                        this.handleCheckOut()
+                        console.log('checkout complete')
+                    }}
+                    >Check Out
+                    </button>
+                <br></br>
+                <br></br>
+                <br></br>
                 {mappedCart}
             </div>
         )
