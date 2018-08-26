@@ -39,26 +39,31 @@ export default class Cart extends Component {
                             onClick={() => {
                                 axios.put('api/cartDec/'+element.id)
                                 .then(console.log('decremented'))
-                                .then(this.componentDidMount())
+                                .then(axios.get('api/cart')
+                                    .then(this.componentDidMount()))
+                                .catch(() => alert('Quantity cannot be less than 1.'))
                             }}
                             >-</button> 
                         <button
                             onClick={() => {
                                 axios.put('api/cartInc/'+element.id)
                                 .then(console.log('incremented'))
-                                .then(this.componentDidMount())
+                                .then(axios.get('api/cart')
+                                    .then(this.componentDidMount()))
                             }}
                             >+</button> 
                         </p> 
 
-                    <p key={`product ${element.price}`} >{element.price}</p>                    
+                    <p key={`product ${element.price}`} >${element.price}</p>                    
 
                     <button
                     onClick={() => {
                         axios.delete('api/cart/'+element.id)
                         .then(console.log('deleted'))
-                        // .then(axios.get('api/cart/'))
-                        .then(this.componentDidMount())
+                        .then(axios.get('api/cart/')
+                            .then(this.componentDidMount()))
+                        .then(axios.get('api/cart/')
+                            .then(this.componentDidMount()))
                     }}
                         >delete
                     </button>
@@ -73,7 +78,7 @@ export default class Cart extends Component {
                     className='checkoutButton'
                     onClick={() => {
                         this.handleCheckOut()
-                        console.log('checkout complete')
+                        alert('Checkout complete. Your cart will be cleared.')
                     }}
                     >Check Out
                     </button>
