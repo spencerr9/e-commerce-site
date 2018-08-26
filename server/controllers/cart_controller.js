@@ -35,5 +35,31 @@ module.exports = {
                 res.status(500).send({errorMessage: "--- Something went wrong ---"})
                 console.log(err)
             })
+    },
+
+    addQty: (req, res, next) => {
+        const dbInstance = req.app.get('db');
+        const {id} = req.params;
+        console.log(req.params.id)
+
+        dbInstance.add_qty(id)
+            .then( (items) => res.status(200).send(items))
+            .catch( err => {
+                res.status(500).send({errorMessage: "--- Something went wrong ---"})
+                console.log(err)
+            })
+    },
+
+    subQty: (req, res, next) => {
+        const dbInstance = req.app.get('db');
+        const {id} = req.params;
+        console.log(req.params.id)
+
+        dbInstance.subtract_qty(id)
+            .then( (items) => res.status(200).send(items))
+            .catch( err => {
+                res.status(500).send({errorMessage: "--- Something went wrong ---"})
+                console.log(err)
+            })
     }
 };

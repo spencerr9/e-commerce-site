@@ -25,12 +25,29 @@ export default class Cart extends Component {
                 <div className='productsContainer' key={`div ${element.id}`}>
                     <img src={element.image_src} alt='product' key={`picture ${element.id}`} height='200' ></img>
                     <p key={`product ${element.id}`} >{element.product}</p>
-                    <p key={`qty ${element.id}`} >Qty: {(element.quantity)} <button>-</button> <button>+</button> </p> 
+                    
+                    <p key={`qty ${element.id}`} >Qty: {(element.quantity)} 
+                        <button
+                            onClick={() => {
+                                axios.put('api/cartDec/'+element.id)
+                                .then(console.log('decremented'))
+                                .then(this.componentDidMount())
+                            }}
+                            >-</button> 
+                        <button
+                            onClick={() => {
+                                axios.put('api/cartInc/'+element.id)
+                                .then(console.log('incremented'))
+                                .then(this.componentDidMount())
+                            }}
+                            >+</button> 
+                    </p> 
+
                     <button
                     onClick={() => {
                         axios.delete('api/cart/'+element.id)
                         .then(console.log('deleted'))
-                        .then(axios.get('api/cart/'))
+                        // .then(axios.get('api/cart/'))
                         .then(this.componentDidMount())
                     }}
                         >delete
@@ -41,7 +58,7 @@ export default class Cart extends Component {
         })
         return (
             <div>
-                <h1>Cart Component</h1>
+                <h1>Shopping Cart</h1>
                 {mappedCart}
             </div>
         )

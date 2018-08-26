@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {HashRouter, Link} from 'react-router-dom';
 
 import './ShopPage.css'
 
@@ -44,13 +45,13 @@ export default class ShopPage extends Component {
                     <p key={`product ${element.id}`} >{element.product}</p>
                     <p key={`category ${element.id}`} >{element.category}</p>
                     <p key={`price ${element.id}`} >${(element.price)}</p>
-                    <button
+                    <HashRouter><Link to='/cart'><button
                     onClick={() => {axios.post(`/api/cart/`+element.product)
                         .then(() => { 
                         console.log('success')
                      })
                     }}
-                    >Add To Cart</button>
+                    >Add To Cart</button></Link></HashRouter>
                     <hr></hr>
                 </div>
             )
@@ -58,7 +59,9 @@ export default class ShopPage extends Component {
         console.log(this.state)
         return (
             <div>
-                <h1>ShopPage Component</h1>
+                {/* <h1>ShopPage Component</h1> */}
+                <br></br>
+                <br></br>
                 {mappedProducts}
             </div>
         )
