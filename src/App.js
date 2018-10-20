@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {HashRouter, Switch, Route, Link} from 'react-router-dom';
 
 import NavBar from './Components/NavBar';
-import NavDrawer from './Components/NavDrawer';
 import ShopPage from './Components/ShopPage';
 import Cart from './Components/Cart';
 
