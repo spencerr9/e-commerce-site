@@ -94,7 +94,7 @@ class ShopPage extends Component {
         console.log(this.props)
         return (
             <div>
-                <p>Route: {this.props.match.path}</p>
+                {/* <p>Route: {this.props.match.path}</p> */}
                 {/* <h1>ShopPage Component</h1> */}
                 <br></br>
                 <br></br>
