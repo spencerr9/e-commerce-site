@@ -10,6 +10,8 @@ import { withStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 
+import NavDrawer from '../Components/NavDrawer';
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -76,9 +78,10 @@ function NavBar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
+          {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
+          <NavDrawer />
           <Typography className={classes.title} variant="h5" color="inherit" noWrap>
             Action Figures Shop
           </Typography>
