@@ -1,34 +1,41 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 // import {HashRouter, Link} from 'react-router-dom';
+import {withRouter} from 'react-router';
 
 import './ShopPage.css'
 
-export default class ShopPage extends Component {
+class ShopPage extends Component {
     constructor() {
         super()
 
         this.state = {
             products: [],
-            cart: []
+            cart: []  // try doing an axios call from the database to set the cart state with the cart database, adding only one item to the cart might be possible after that.
         }
     }
 
     componentDidMount() {
-        axios.get('/api/products')
-            .then(res => {
-                console.log(res)
-                this.setState({products: res.data})
-            })
-            .catch(err => {console.log(err)})
+        this.handleProductsDB()
+        // axios.get('/api/products')
+        //     .then(res => {this.setState({products: res.data}) })
+        //     .catch(err => {console.log(err)})
+        this.handleCartDB()
+        // axios.get('/api/cart')
+        //     .then(res => {this.setState({cart: res.data}) })
+        //     .catch(err => {console.log(err)})
     }
 
-    // handleAddToCart() {
-    //     let prodName_prodTable = axios.get('/api/products').then(res => res.data)
-    //     let prodName_cartTable = axios.get('/api/cart').then(res => res.data)
-    //     console.log(prodName_prodTable, prodName_cartTable)
+    handleProductsDB(){
+        axios.get('/api/products')
+            .then(res => {this.setState({products: res.data}) })
+    }
 
-    // }
+    handleCartDB(){
+        axios.get('/api/cart')
+            .then(res => {this.setState({cart: res.data}) })
+            .catch(err => {console.log(err)})
+    }
 
     handleAddToCart(){
         axios.post('/api/cartAdd/:id')
@@ -38,6 +45,17 @@ export default class ShopPage extends Component {
     }
 
     render(){
+        let mappedCart = this.state.cart.map(e => {
+            return (
+                <div>
+                    {e.product}
+                </div>
+            )
+        })
+        console.log((mappedCart))
+
+
+
         let mappedProducts = this.state.products.map( (element) => {
             return (
                 <div className='productsContainer' key={`div ${element.id}`}>
@@ -47,6 +65,19 @@ export default class ShopPage extends Component {
                     <p key={`price ${element.id}`} >${(element.price)}</p>
                     
                     {/* <HashRouter><Link to='/cart'> */}
+                    {/* <button
+                    onClick={() => {
+                        // let cartPost = this.handleAddToCart()
+                        let cartArray = this.state.cart
+                        for(let i = 0; i<cartArray.length; i++){
+                            if(element.product === cartArray[i].product){
+                                return alert('This product already exists in your shopping cart')
+                            }
+                            return this.handleAddToCart().then(this.componentDidMount())
+                        }
+                    }}
+                    >Add To Cart</button> */}
+
                     <button
                     onClick={() => {axios.post(`/api/cart/`+element.product)
                         .then(() => { 
@@ -54,14 +85,16 @@ export default class ShopPage extends Component {
                      })
                     }}
                     >Add To Cart</button>
+
                     {/* </Link></HashRouter> */}
                     <hr></hr>
                 </div>
             )
         })
-        console.log(this.state)
+        console.log(this.props)
         return (
             <div>
+                <p>Route: {this.props.match.path}</p>
                 {/* <h1>ShopPage Component</h1> */}
                 <br></br>
                 <br></br>
@@ -70,3 +103,5 @@ export default class ShopPage extends Component {
         )
     }
 }
+
+export default withRouter(ShopPage)
