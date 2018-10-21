@@ -3,12 +3,16 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import SendIcon from '@material-ui/icons/Send';
+
+import MenuIcon from '@material-ui/icons/Menu';
+import ShopIcon from '@material-ui/icons/ShopSharp';
+import CartIcon from '@material-ui/icons/ShoppingCartSharp';
+
+import {Link} from 'react-router-dom'
 
 const styles = {
   list: {
@@ -36,13 +40,23 @@ class NavDrawer extends React.Component {
     const sideList = (
       <div className={classes.list}>
         Title
-        <Divider />
-        <ListItem button>
-            <ListItemIcon>
-                <SendIcon />
-            </ListItemIcon>
-            <ListItemText inset primary="Sent mail" />
-        </ListItem>
+        <Divider style={{margin: '31px 0'}} />
+        <Link to='/' className='LinkMenu'>
+          <ListItem button>
+              <ListItemIcon>
+                  <ShopIcon />
+              </ListItemIcon>
+              <ListItemText inset primary="Shop" />
+          </ListItem>
+        </Link>
+        <Link to='/Cart' className='LinkMenu'>
+          <ListItem button>
+              <ListItemIcon>
+                  <CartIcon />
+              </ListItemIcon>
+              <ListItemText inset primary="Shopping Cart" />
+          </ListItem>
+        </Link>
       </div>
     );
 

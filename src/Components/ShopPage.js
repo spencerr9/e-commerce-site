@@ -11,7 +11,7 @@ class ShopPage extends Component {
 
         this.state = {
             products: [],
-            cart: []  // try doing an axios call from the database to set the cart state with the cart database, adding only one item to the cart might be possible after that.
+            cart: [] 
         }
     }
 

@@ -6,9 +6,13 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
+
 import SearchIcon from '@material-ui/icons/Search';
+import CartIcon from '@material-ui/icons/ShoppingCartSharp';
 
 import NavDrawer from '../Components/NavDrawer';
+
+import {Link} from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -77,9 +81,14 @@ function NavBar(props) {
       <AppBar position="static">
         <Toolbar>
           <NavDrawer />
-          <Typography className={classes.title} variant="h5" color="inherit" noWrap>
-            Action Figures Shop
-          </Typography>
+            <Link to='/' className='Link' style={{color: 'white'}} >
+              <Typography className={classes.title} variant="h5" color="inherit" noWrap>
+                Action Figures Shop
+              </Typography>
+            </Link>
+            <Link to='/cart' className='Link' style={{color: 'white'}} >
+              <CartIcon style={{margin: '0 2vw'}} />
+            </Link>
           <div className={classes.grow} />
           <div className={classes.search}>
             <div className={classes.searchIcon}>

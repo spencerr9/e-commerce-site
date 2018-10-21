@@ -2,12 +2,14 @@
   text-align: center;
 }
 
-.header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: gray;
-  /* background: url('https://media.giphy.com/media/YxC6tDcj0mqWs/giphy.gif');
-  background-size: cover; */
-  height: 87px;
+.LinkMenu {
+  text-decoration: none;
+}
+
+.Link {
+  text-decoration: none;
+}
+
+.Link:active, .Link:hover {
+  text-decoration: underline;
 }
