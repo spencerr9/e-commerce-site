@@ -1,4 +1,4 @@
-.navWrapper {
+#navWrapper {
     background-color: silver;
     height: 100px;
     width: 100%;
@@ -17,14 +17,19 @@
     padding-bottom: 8px;
 }
 
-.navLink {
+#navLink {
     font-family: 'Roboto';
     text-transform: uppercase;
     font-weight: 600;
 }
 
-.navLink > a {
-    padding: 0 41px;
+#navLink > a {
+    margin: 0 41px;
     text-decoration: none;
     color: #333;
 }
+
+#navLink > a:hover {
+    border-bottom: 3px solid red
+}
+

@@ -8,12 +8,12 @@ import './NavBar.css';
 export default class NavBar extends Component {
   render(){
     return (
-      <div className='navWrapper'>
+      <div id='navWrapper'>
         {/* <div className='navHamburger'><NavDrawer /></div> */}
         <div className='navTitle'>Action Figures Shop</div>
-        <div className='navLink'>
-          <Link to='/'>Shop</Link>
-          <Link to='/cart'>Cart</Link>
+        <div id='navLink'>
+          <Link to='/' className='shop' activeClassName='activeShop'>Shop</Link>
+          <Link to='/cart' className='cart'>Cart</Link>
         </div>
       </div>
     )
