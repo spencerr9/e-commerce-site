@@ -39,7 +39,7 @@ class NavDrawer extends React.Component {
 
     const sideList = (
       <div className={classes.list}>
-        Title
+        <h3 className='DrawerTitle'>Action Figures Shop</h3>
         <Divider style={{margin: '31px 0'}} />
         <Link to='/' className='LinkMenu'>
           <ListItem button>

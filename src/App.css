@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster|Roboto:400,700,900');
+
 .App {
   text-align: center;
 }
@@ -12,4 +14,11 @@
 
 .Link:active, .Link:hover {
   text-decoration: underline;
+}
+
+.DrawerTitle {
+  font-family: 'Lobster';
+  font-size: 28px;
+  text-align: center;
+  padding-top: 24px;
 }
